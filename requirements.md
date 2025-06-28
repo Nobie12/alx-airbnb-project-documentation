@@ -38,7 +38,7 @@ Handles user registration, login, and authentication using secure methods (e.g.,
 }
 ```
 
-📤 Output Examples
+**📤 Output Examples**
 ✅ Successful Login
 ```json
 {
@@ -56,14 +56,14 @@ Handles user registration, login, and authentication using secure methods (e.g.,
   "error": "Invalid email or password"
 }
 ```
-✔️ Validation Rules
+#### ✔️ Validation Rules
 Email must be unique and properly formatted
 
 Password must be at least 6 characters
 
 Role must be one of: guest, host, admin
 
-🚀 Performance Criteria
+#### 🚀 Performance Criteria
 Response time: < 500ms
 
 JWT expiry: 24 hours
@@ -72,22 +72,19 @@ Passwords stored using bcrypt/Argon2
 
 Max 5 failed login attempts/hour (rate limit)
 
-🏠 2. Property Management
-✅ Feature Description
+## 🏠 2. Property Management
+### ✅ Feature Description
 Hosts can create, update, and manage property listings.
 
 📌 API Endpoints
-Method	Endpoint	Description
-POST	/api/properties	Create a new property listing
-PUT	/api/properties/:id	Update an existing property
-DELETE	/api/properties/:id	Delete a property
-GET	/api/properties/:id	Get property details
-GET	/api/properties	List all available properties
+| Method    | Endpoint                     |    Description                                |
+|-----------|------------------------------|-----------------------------------------------|
+| POST      | `/api/auth/register`         | Create a new property listing                 |
+| PUT	      | `/api/properties/:id`        | Update an existing property                   |
+| DELETE    | `/api/properties/:id`        | Delete a property                |
 
 📥 Input Example (POST)
-json
-Copy
-Edit
+```json
 {
   "title": "Beachfront Apartment",
   "description": "Cozy and relaxing place by the ocean",
@@ -96,10 +93,9 @@ Edit
   "amenities": ["WiFi", "Pool", "Kitchen"],
   "images": ["url1", "url2"]
 }
+```
 📤 Output Example (GET)
-json
-Copy
-Edit
+```json
 {
   "id": "property-uuid",
   "title": "Beachfront Apartment",
@@ -107,7 +103,8 @@ Edit
   "host_id": "user-uuid",
   "available": true
 }
-✔️ Validation Rules
+```
+#### ✔️ Validation Rules
 Title: max 100 characters
 
 Price: must be > 0
@@ -116,7 +113,7 @@ Images: must be valid URLs
 
 Only property owner (host) can update/delete
 
-🚀 Performance Criteria
+#### 🚀 Performance Criteria
 GET responses < 300ms
 
 Paginated /properties endpoint
