@@ -28,19 +28,19 @@ Handles user registration, login, and authentication using secure methods (e.g.,
   "password": "secret123",
   "role": "host"
 }
-POST /api/auth/login
-json
-Copy
-Edit
+```
+
+### POST /api/auth/login
+```json
 {
   "email": "john@example.com",
   "password": "secret123"
 }
+```
+
 📤 Output Examples
 ✅ Successful Login
-json
-Copy
-Edit
+```json
 {
   "token": "jwt-token-here",
   "user": {
@@ -49,13 +49,13 @@ Edit
     "role": "host"
   }
 }
+```
 ❌ Failed Login
-json
-Copy
-Edit
+```json
 {
   "error": "Invalid email or password"
 }
+```
 ✔️ Validation Rules
 Email must be unique and properly formatted
 
@@ -135,19 +135,16 @@ DELETE	/api/bookings/:id	Cancel a booking
 GET	/api/properties/:id/bookings	View bookings for a property
 
 📥 Input Example (POST)
-json
-Copy
-Edit
+```json
 {
   "property_id": "property-uuid",
   "guest_id": "user-uuid",
   "check_in": "2025-07-15",
   "check_out": "2025-07-18"
 }
-📤 Output Example
-json
-Copy
-Edit
+```
+**📤 Output Example**
+```json
 {
   "booking_id": "booking-uuid",
   "property_id": "property-uuid",
@@ -155,18 +152,22 @@ Edit
   "total_cost": 270,
   "created_at": "2025-06-28T12:00:00Z"
 }
-✔️ Validation Rules
-Check-in must be today or later
+```
+---
 
-Check-out must be after check-in
+### ✔️ Validation Rules
+- Check-in must be today or later
 
-No double booking for selected dates
+- Check-out must be after check-in
 
-Guests can’t book their own properties
+- No double booking for selected dates
 
-Atomic operations: booking + payment must succeed together
+- Guests can’t book their own properties
 
-🚀 Performance Criteria
+- Atomic operations: booking + payment must succeed together
+---
+
+### 🚀 Performance Criteria
 Booking creation < 400ms
 
 Database constraints to prevent double booking
